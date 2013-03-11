@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GLKit/GLKit.h>
 
-@interface TransitionView : UIView
+@interface TransitionView : GLKView
 
 - (void)changeTransition:(NSUInteger)transitionIndex;
 - (NSString *)currentFilterName;

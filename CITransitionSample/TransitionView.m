@@ -11,6 +11,7 @@
 
 
 @interface TransitionView ()
+<GLKViewDelegate>
 {
     NSTimeInterval  base;
     CGRect imageRect;
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) CIImage *maskImage;
 @property (nonatomic, strong) CIVector *extent;
 @property (nonatomic, strong) CIFilter *transition;
+@property (nonatomic, strong) CIContext *myContext;
 @end
 
 
@@ -37,7 +39,7 @@
     self.maskImage = [[CIImage alloc] initWithCGImage:uiMaskImage.CGImage];
     
     // 表示領域を示す矩形（CGRect型）
-    imageRect = CGRectMake(0, 0, uiImage1.size.width / 2, uiImage1.size.height / 2);
+    imageRect = CGRectMake(0, 0, uiImage1.size.width, uiImage1.size.height);
 
     // 遷移アニメーションが起こる領域を示す矩形（CIVector型）
     self.extent = [CIVector vectorWithX:0
@@ -54,18 +56,15 @@
                                    selector:@selector(onTimer:)
                                    userInfo:nil
                                     repeats:YES];
-}
 
-- (void)drawRect:(CGRect)rect {
-
-    // 遷移前後の画像をtimeによって切り替える
-    float t = 0.4 * ([NSDate timeIntervalSinceReferenceDate] - base);
-
-    CIImage *image = [self imageForTransitionAtTime:t];
-    UIImage *uiImage = [UIImage imageWithCIImage:image];
+    // EAGLDelegateの設定
+    self.delegate = self;
     
-    [uiImage drawInRect:imageRect];
+    // コンテキスト生成
+    self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    self.myContext = [CIContext contextWithEAGLContext:self.context];
 }
+
 
 
 #pragma mark -------------------------------------------------------------------
@@ -141,6 +140,23 @@
 - (NSString *)currentFilterName {
     
     return self.transition.name;
+}
+
+
+#pragma mark -------------------------------------------------------------------
+#pragma mark GLKViewDelegate
+
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
+    
+    // 遷移前後の画像をtimeによって切り替える
+    float t = 0.4 * ([NSDate timeIntervalSinceReferenceDate] - base);
+    
+    CIImage *image = [self imageForTransitionAtTime:t];
+    
+
+    [self.myContext drawImage:image
+                       inRect:imageRect
+                     fromRect:imageRect];
 }
 
 
