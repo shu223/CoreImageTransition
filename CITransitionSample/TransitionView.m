@@ -148,15 +148,21 @@
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
     
-    // 遷移前後の画像をtimeによって切り替える
-    float t = 0.4 * ([NSDate timeIntervalSinceReferenceDate] - base);
-    
-    CIImage *image = [self imageForTransitionAtTime:t];
-    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        
+        // 遷移前後の画像をtimeによって切り替える
+        float t = 0.4 * ([NSDate timeIntervalSinceReferenceDate] - base);
+        
+        CIImage *image = [self imageForTransitionAtTime:t];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
 
-    [self.myContext drawImage:image
-                       inRect:imageRect
-                     fromRect:imageRect];
+            [self.myContext drawImage:image
+                               inRect:imageRect
+                             fromRect:imageRect];
+        });
+    });
 }
 
 
