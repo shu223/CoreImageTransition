@@ -32,8 +32,8 @@
 }
 
 
-#pragma mark -------------------------------------------------------------------
-#pragma mark Private
+// =============================================================================
+#pragma mark - Actions
 
 - (IBAction)segmentChanged:(UISegmentedControl *)sender {
 

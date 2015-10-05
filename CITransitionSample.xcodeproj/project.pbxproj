@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8ADE4A2E16ECC0A900F8ABDE /* mask.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8ADE4A2D16ECC0A900F8ABDE /* mask.jpg */; };
 		8ADE4A4D16ED669800F8ABDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADE4A3C16ED669800F8ABDE /* AppDelegate.m */; };
-		8ADE4A4F16ED669800F8ABDE /* CITransitionSample-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8ADE4A3F16ED669800F8ABDE /* CITransitionSample-Info.plist */; };
 		8ADE4A5016ED669800F8ABDE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADE4A4116ED669800F8ABDE /* Default-568h@2x.png */; };
 		8ADE4A5116ED669800F8ABDE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADE4A4216ED669800F8ABDE /* Default.png */; };
 		8ADE4A5216ED669800F8ABDE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADE4A4316ED669800F8ABDE /* Default@2x.png */; };
@@ -190,7 +189,7 @@
 		8AE3AE2F16EC1438005E65C7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Shuichi Tsutsumi";
 			};
 			buildConfigurationList = 8AE3AE3216EC1438005E65C7 /* Build configuration list for PBXProject "CITransitionSample" */;
@@ -218,7 +217,6 @@
 				8AE3AE6316EC1757005E65C7 /* sample1.jpg in Resources */,
 				8AE3AE6416EC1757005E65C7 /* sample2.jpg in Resources */,
 				8ADE4A2E16ECC0A900F8ABDE /* mask.jpg in Resources */,
-				8ADE4A4F16ED669800F8ABDE /* CITransitionSample-Info.plist in Resources */,
 				8ADE4A5016ED669800F8ABDE /* Default-568h@2x.png in Resources */,
 				8ADE4A5116ED669800F8ABDE /* Default.png in Resources */,
 				8ADE4A5216ED669800F8ABDE /* Default@2x.png in Resources */,
@@ -278,6 +276,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -326,6 +325,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CITransitionSample/CITransitionSample-Prefix.pch";
 				INFOPLIST_FILE = "CITransitionSample/CITransitionSample-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shu223.CITransitionSample;
 				PRODUCT_NAME = CITransitionSample;
 				WRAPPER_EXTENSION = app;
 			};
@@ -337,6 +337,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CITransitionSample/CITransitionSample-Prefix.pch";
 				INFOPLIST_FILE = "CITransitionSample/CITransitionSample-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shu223.CITransitionSample;
 				PRODUCT_NAME = CITransitionSample;
 				WRAPPER_EXTENSION = app;
 			};

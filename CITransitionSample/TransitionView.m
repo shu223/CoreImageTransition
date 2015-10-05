@@ -40,6 +40,7 @@
     
     // 表示領域を示す矩形（CGRect型）
     imageRect = CGRectMake(0, 0, uiImage1.size.width, uiImage1.size.height);
+    
 
     // 遷移アニメーションが起こる領域を示す矩形（CIVector型）
     self.extent = [CIVector vectorWithX:0
@@ -66,9 +67,8 @@
 }
 
 
-
-#pragma mark -------------------------------------------------------------------
-#pragma mark Private
+// =============================================================================
+#pragma mark - Private
 
 - (CIImage *)imageForTransitionAtTime:(float)time
 {
@@ -96,8 +96,8 @@
 }
 
 
-#pragma mark -------------------------------------------------------------------
-#pragma mark Public
+// =============================================================================
+#pragma mark - Public
 
 - (void)changeTransition:(NSUInteger)transitionIndex {
     
@@ -143,8 +143,8 @@
 }
 
 
-#pragma mark -------------------------------------------------------------------
-#pragma mark GLKViewDelegate
+// =============================================================================
+#pragma mark - GLKViewDelegate
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
     
@@ -155,19 +155,25 @@
         float t = 0.4 * ([NSDate timeIntervalSinceReferenceDate] - base);
         
         CIImage *image = [self imageForTransitionAtTime:t];
-        
+
+        // 描画領域を示す矩形
+        CGFloat scale = [[UIScreen mainScreen] scale];
+        CGRect destRect = CGRectMake(0, self.bounds.size.height * scale - imageRect.size.height,
+                                     imageRect.size.width,
+                                     imageRect.size.height);
+
         dispatch_async(dispatch_get_main_queue(), ^{
 
             [self.myContext drawImage:image
-                               inRect:imageRect
+                               inRect:destRect
                              fromRect:imageRect];
         });
     });
 }
 
 
-#pragma mark -------------------------------------------------------------------
-#pragma mark Timer Handler
+// =============================================================================
+#pragma mark - Timer Handler
 
 - (void)onTimer:(NSTimer *)timer {
 
