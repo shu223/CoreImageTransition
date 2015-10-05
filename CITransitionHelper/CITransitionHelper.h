@@ -14,11 +14,12 @@ typedef enum {
     kCITransitionTypeFlash,
     kCITransitionTypeMod,
     kCITransitionTypeSwipe,
+    kCITransitionTypePageCurl,
+    kCITransitionTypePageCurlWithShadow,
+    kCITransitionTypeRipple,
 
     // --- not supported ----
     kCITransitionTypeBarSwipe,
-    kCITransitionTypePageCurl,
-    kCITransitionTypeRipple,
 } CITransitionType;
 
 

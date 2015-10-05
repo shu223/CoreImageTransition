@@ -23,14 +23,14 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20">
-                    <rect key="frame" x="20" y="489" width="280" height="22"/>
+                    <rect key="frame" x="10" y="489" width="300" height="22"/>
                     <animations/>
                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                     <color key="textColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <segmentedControl opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="17">
-                    <rect key="frame" x="20" y="519" width="280" height="29"/>
+                    <rect key="frame" x="10" y="519" width="300" height="29"/>
                     <animations/>
                     <segments>
                         <segment title="1"/>
@@ -39,6 +39,9 @@
                         <segment title="4"/>
                         <segment title="5"/>
                         <segment title="6"/>
+                        <segment title="7"/>
+                        <segment title="8"/>
+                        <segment title="9"/>
                     </segments>
                     <color key="tintColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
@@ -50,15 +53,15 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="17" secondAttribute="bottom" constant="21" id="0BT-cf-1qo"/>
-                <constraint firstItem="17" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="20" id="PuQ-ku-jzY"/>
-                <constraint firstItem="20" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="20" id="Vuj-jY-mlm"/>
+                <constraint firstItem="17" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="10" id="PuQ-ku-jzY"/>
+                <constraint firstItem="20" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="10" id="Vuj-jY-mlm"/>
                 <constraint firstItem="15" firstAttribute="top" secondItem="6" secondAttribute="top" id="dog-0w-CxD"/>
                 <constraint firstAttribute="bottom" secondItem="15" secondAttribute="bottom" id="gPP-x7-HLt"/>
                 <constraint firstAttribute="trailing" secondItem="15" secondAttribute="trailing" id="jge-2Q-iDf"/>
                 <constraint firstItem="15" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="o3g-ck-W0V"/>
                 <constraint firstItem="17" firstAttribute="top" secondItem="20" secondAttribute="bottom" constant="8" id="puS-A7-620"/>
-                <constraint firstAttribute="trailing" secondItem="20" secondAttribute="trailing" constant="20" id="rS7-Sk-hmL"/>
-                <constraint firstAttribute="trailing" secondItem="17" secondAttribute="trailing" constant="20" id="v5t-5a-63S"/>
+                <constraint firstAttribute="trailing" secondItem="20" secondAttribute="trailing" constant="10" id="rS7-Sk-hmL"/>
+                <constraint firstAttribute="trailing" secondItem="17" secondAttribute="trailing" constant="10" id="v5t-5a-63S"/>
             </constraints>
         </view>
     </objects>

@@ -19,6 +19,7 @@
 @property (nonatomic, strong) CIImage *image1;
 @property (nonatomic, strong) CIImage *image2;
 @property (nonatomic, strong) CIImage *maskImage;
+@property (nonatomic, strong) CIImage *shadingImage;
 @property (nonatomic, strong) CIVector *extent;
 @property (nonatomic, strong) CIFilter *transition;
 @property (nonatomic, strong) CIContext *myContext;
@@ -33,10 +34,12 @@
     UIImage *uiImage1    = [UIImage imageNamed:@"sample1.jpg"];
     UIImage *uiImage2    = [UIImage imageNamed:@"sample2.jpg"];
     UIImage *uiMaskImage = [UIImage imageNamed:@"mask.jpg"];
+    UIImage *uiShadingImage = [UIImage imageNamed:@"restrictedshine.tiff"];
     
     self.image1    = [CIImage imageWithCGImage:uiImage1.CGImage];
     self.image2    = [CIImage imageWithCGImage:uiImage2.CGImage];
-    self.maskImage = [[CIImage alloc] initWithCGImage:uiMaskImage.CGImage];
+    self.maskImage = [CIImage imageWithCGImage:uiMaskImage.CGImage];
+    self.shadingImage = [CIImage imageWithCGImage:uiShadingImage.CGImage];
     
     // 表示領域を示す矩形（CGRect型）
     imageRect = CGRectMake(0, 0, uiImage1.size.width, uiImage1.size.height);
@@ -101,39 +104,61 @@
 
 - (void)changeTransition:(NSUInteger)transitionIndex {
     
+    CITransitionType type;
+    CIImage *optionImage;
+    
     switch (transitionIndex) {
             
         case 0:
         default:
-            self.transition = [CITransitionHelper transitionWithType:kCITransitionTypeDissolve
-                                                              extent:self.extent];
+            type = kCITransitionTypeDissolve;
             break;
             
         case 1:
-            self.transition = [CITransitionHelper transitionWithType:kCITransitionTypeCopyMachine
-                                                              extent:self.extent];
+            type = kCITransitionTypeCopyMachine;
             break;
             
         case 2:
-            self.transition = [CITransitionHelper transitionWithType:kCITransitionTypeFlash
-                                                              extent:self.extent];
+            type = kCITransitionTypeFlash;
             break;
             
         case 3:
-            self.transition = [CITransitionHelper transitionWithType:kCITransitionTypeMod
-                                                              extent:self.extent];
+            type = kCITransitionTypeMod;
             break;
             
         case 4:
-            self.transition = [CITransitionHelper transitionWithType:kCITransitionTypeSwipe
-                                                              extent:self.extent];
+            type = kCITransitionTypeSwipe;
             break;
             
         case 5:
-            self.transition = [CITransitionHelper transitionWithType:kCITransitionTypeDisintegrateWithMask
-                                                              extent:self.extent
-                                                         optionImage:self.maskImage];
+            type = kCITransitionTypeDisintegrateWithMask;
+            optionImage = self.maskImage;
             break;
+
+        case 6:
+            type = kCITransitionTypePageCurl;
+            optionImage = self.shadingImage;
+            break;
+
+        case 7:
+            type = kCITransitionTypePageCurlWithShadow;
+//            optionImage = self.shadingImage;
+            break;
+
+        case 8:
+            type = kCITransitionTypeRipple;
+            optionImage = self.shadingImage;
+            break;
+    }
+    
+    if (optionImage) {
+        self.transition = [CITransitionHelper transitionWithType:type
+                                                          extent:self.extent
+                                                     optionImage:optionImage];
+    }
+    else {
+        self.transition = [CITransitionHelper transitionWithType:type
+                                                          extent:self.extent];
     }
 }
 
