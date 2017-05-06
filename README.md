@@ -1,4 +1,4 @@
-#Core Image Transition
+# Core Image Transition
 
 [![Platform](http://img.shields.io/badge/platform-ios-green.svg?style=flat
 )](https://developer.apple.com/iphone/index.action)
@@ -11,15 +11,15 @@ A sample app for transition effects using Core Image, including a useful helper 
 
 ![](ResourcesForREADME/transitions.gif)
 
-##Tutorial
+## Tutorial
 
 [Using Core Image Transition Effects (Japanese)](http://d.hatena.ne.jp/shu223/20130311/1362962817)
 
-##License
+## License
 
 MIT
 
-##Author
+## Author
 
 **Shuichi Tsutsumi**
 
